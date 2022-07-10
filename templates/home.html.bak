@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>Blog</title>
+		<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+		<script src="{{url_for('static',filename='jquery-3.6.0.min.js')}}"></script>
+		<script src="https://kit.fontawesome.com/541297668d.js" crossorigin="anonymous"></script>
+
+	</head>
+	<body>
+		<h1>BLOG</h1>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<h4>{{ message }}</h4>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		<br />
+		<div align="right">
+		<p><a href="{{url_for('addpost')}}">New Post</a></p>
+		</div>
+		<br />
+		{% for data in datas %}
+		<font color="Light Blue">
+		<h3>AUTHOR: {{data.author}} </h3>
+		</font>
+		<br />	
+		<h3>TITLE: {{data.title}} </h3>
+		<br />	
+		<font color="sky blue">
+		<h3>ABOUT...</h3>
+		</font>
+		<font face="Times New Roman" size='4' align="justify">
+			<p>
+				{{data.content}}
+			</p>
+		</font>
+		<br />
+		<div>
+			<center><img alt="No Image" class="img img-thumbnail" src="{{path}}"></center>
+		</div>
+		<br />
+		<div align="right">
+		<a  href="{{url_for('deletepost')}}">Delete</a>
+		</div>
+		<br />
+		<hr> <!--Horizontal Rule-->
+		<br />
+		{% endfor %}
+	</body>
+</html>

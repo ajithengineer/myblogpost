@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>Blog</title>
+		<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+		<script src="{{url_for('static',filename='jquery-3.6.0.min.js')}}"></script>
+		<script src="https://kit.fontawesome.com/541297668d.js" crossorigin="anonymous"></script>
+		<style>
+			body{
+			background-image:url({{url_for('static',filename='source/image/homeadd.jpg')}})
+			}
+		</style>
+	</head>
+	<body>
+		<h1>BLOG</h1>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<h4>{{ message }}</h4>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		<br />
+		<div align="right">
+		<p><a href="{{url_for('addpost')}}">New Post</a></p>
+		</div>
+		<br />
+		{% for data in datas %}
+		<font color="Light Blue">
+		<h3>AUTHOR: <font color="white">{{data.author}}</font> </h3>
+		</font>
+		<br />	
+		<font color="light blue">
+		<h3>TITLE: <font color="white">{{data.title}}</font> </h3>
+		<br />	
+		<font color="sky blue">
+		<h3>ABOUT...</h3>
+		</font>
+		<font color="white" face="Times New Roman" size='4' align="justify">
+			<p>
+				{{data.content}}
+			</p>
+		</font>
+		<br />
+		<font color="light blue" size='2'> 
+		<h3>More Details: <font color="white">{{data.link}}</font> </h3>
+		<br />
+		<div align="right">
+		<a  href="{{url_for('deletepost')}}">Delete</a>
+		</div>
+		<br />
+		<hr> <!--Horizontal Rule-->
+		<br />
+		{% endfor %}
+	</body>
+</html>

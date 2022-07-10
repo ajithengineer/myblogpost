@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+		<style>
+			body{
+			background-repeat:no-repeat;
+			background-size:cover;
+			background-image:url({{url_for('static',filename='source/image/deletepost.jpg')}})
+			}
+		</style>
+	</head>
+	
+	<body>
+		<h1>Delete Post</h1>
+		<form action='' method='POST'>
+			<center>
+				<p>Enter The Title To Delete This Post!</p>
+				<label>Title Name</label>
+				<input type="text" name="dtitle" required>
+				<input type='submit' value='delete post' >
+			</center>
+		</form>
+	</body>
+</html>
