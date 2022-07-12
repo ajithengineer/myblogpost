@@ -4,7 +4,11 @@
 		<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
 		<script src="{{url_for('static',filename='jquery-3.6.0.min.js')}}"></script>
 		<script src="https://kit.fontawesome.com/541297668d.js" crossorigin="anonymous"></script>
-
+		<style>
+			body{
+			background-image:url({{url_for('static',filename='source/image/homeadd.jpg')}})
+			}
+		</style>
 	</head>
 	<body>
 		<h1>BLOG</h1>
@@ -22,23 +26,23 @@
 		<br />
 		{% for data in datas %}
 		<font color="Light Blue">
-		<h3>AUTHOR: {{data.author}} </h3>
+		<h3>AUTHOR: <font color="white">{{data.author}}</font> </h3>
 		</font>
 		<br />	
-		<h3>TITLE: {{data.title}} </h3>
+		<font color="light blue">
+		<h3>TITLE: <font color="white">{{data.title}}</font> </h3>
 		<br />	
 		<font color="sky blue">
 		<h3>ABOUT...</h3>
 		</font>
-		<font face="Times New Roman" size='4' align="justify">
+		<font color="white" face="Times New Roman" size='4' align="justify">
 			<p>
 				{{data.content}}
 			</p>
 		</font>
 		<br />
-		<div>
-			<center><img alt="No Image" class="img img-thumbnail" src="{{path}}"></center>
-		</div>
+		<font color="white-space" size='2'> 
+		<p>More Details: <a href="{{data.link}}">Click Here!</a></font> </p>
 		<br />
 		<div align="right">
 		<a  href="{{url_for('deletepost')}}">Delete</a>
